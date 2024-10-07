@@ -1,0 +1,8 @@
+langchain
+crew ai
+⁠streamlit
+⁠os
+⁠pydantic
+tavily
+crewai_tools
+langchain_community

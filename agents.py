@@ -16,8 +16,8 @@ class Agents:
 
     def information_agent(self):
         information = Agent(role="Information Retrieval Specialist",
-                        goal="""Tujuan utama dari Information Retrieval Specialist...""",
-                        backstory="""Information Retrieval Specialist selalu tertarik dengan...""",
+                    goal="""collect and present relevant information quickly and accurately, supporting data-driven decision making.""",
+                        backstory="""Addressing the surge of digital data, this agent is designed to navigate and filter information from multiple sources, helping users find quick solutions in scientific, business, and educational fields....""",
                         verbose=True,
                         llm=self.openaigpt4
                     )

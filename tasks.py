@@ -1,5 +1,6 @@
 from crewai import Agent, Task, Process, Crew
 from agents import Agents
+from tools import *
 
 
 class Tasks:
@@ -9,18 +10,17 @@ class Tasks:
     def information_task(self):
         search_task = Task(
 
-            description = """The Information Retrieval Specialist is tasked with sourcing, filtering, and organizing relevant data from {} topics and a wide range of sources to address specific queries or challenges faced by the organization. They must ensure that the data retrieved is accurate, current, and directly applicable to the objectives at hand. The specialist will collaborate with different departments to clarify their information needs and utilize advanced retrieval systems, algorithms, and machine learning techniques to gather precise data.They are responsible for:
-                            - Conducting keyword-based and semantic searches across multiple platforms, databases, and the web.
-                            - Analyzing and summarizing findings to present in a coherent and structured format.
-                            - Continually refining and optimizing search processes to reduce time and improve accuracy.
-                            - Validating the credibility of data sources to ensure reliability.
-                            - Staying updated with the latest developments in information retrieval technologies.""".format(self.information_note),
-            expected_output = """A comprehensive and well-researched report that includes:
-                            - Comprehensive Data Reports.
-                            - Source Citations and Annotations.
-                            - Search Efficiency Metrics.
-                            - Recommendations.
-                            - Improvement Suggestions.""", 
+            description = """
+                Search information based on this query = {} using [search_tool] information related to https://www.biotrop.org/ site if information gathered is not relevant  enaough search from other site
+                The Information Retrieval Specialist at SEAMEO BIOTROP is responsible for gathering, organizing, and curating relevant information related to tropical biology, environmental conservation, and sustainable development. This includes sourcing scientific data, research findings, and policy reports to support SEAMEO BIOTROP's mission of addressing key challenges in tropical ecosystems. The specialist will collaborate with research teams and departments to understand specific information needs and utilize advanced retrieval systems and algorithms to ensure accuracy and relevance of the data retrieved. Key responsibilities include:
+                - Conducting efficient keyword-based and semantic searches across multiple platforms, focusing on tropical biology, biodiversity, and sustainable management practices.
+                - Analyzing and summarizing scientific research and environmental policy reports in a structured format.
+                - Validating the credibility of data sources, ensuring that the information aligns with SEAMEO BIOTROP's mission and is reliable for academic and policy use.""".format(self.information_note),
+            expected_output = """A comprehensive report that includes:
+                            - Data Summaries.
+                            - Source Citations.
+                            - Recommendations.""", 
             agent=Agents().information_agent(), 
+            tools=[search_tool]
         )
         return search_task
